@@ -1,0 +1,6 @@
+{{define "error_css"}}
+#error-page {
+	text-align: left;
+	color: grey;
+}
+{{end}}

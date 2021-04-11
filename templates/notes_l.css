@@ -1,0 +1,6 @@
+{{define "notes_l_css"}}
+#notes-l-page {
+	text-align: left;
+	color: grey;
+}
+{{end}}

@@ -1,0 +1,12 @@
+{{define "contact_css"}}
+#contact-page {
+	text-align: left;
+	color: grey;
+}
+
+#contact-page h3 {
+	color: #db4e4e;
+	text-transform: uppercase;
+	width: 50%;
+}
+{{end}}
