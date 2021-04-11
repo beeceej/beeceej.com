@@ -26,11 +26,12 @@ type Data struct {
 
 var templates = map[string]Data{
 	"about.html":   Data{PageToRender: "index.html", PageID: "about"},
-	"notes/l.html": Data{PageToRender: "index.html", PageID: "notes-l"},
+	"error.html":   Data{PageToRender: "index.html", PageID: "error"},
 	"contact.html": Data{PageToRender: "index.html", PageID: "contact"},
-	"nav.html":     Data{PageToRender: "", PageID: "index.html"},
-	"index.css":    Data{PageToRender: "index.css"},
 	"footer.html":  Data{PageToRender: "index.html"},
+	"index.css":    Data{PageToRender: "index.css"},
+	"nav.html":     Data{PageToRender: "", PageID: "index.html"},
+	"notes/l.html": Data{PageToRender: "index.html", PageID: "notes-l"},
 }
 
 func makeOutputFile(path string) error {
