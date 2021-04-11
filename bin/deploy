@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+
+set -eo pipefail
+
+readonly DEPLOY_BUCKET="$DEPLOY_BUCKET"
+readonly DEPLOY_BUCKET_PATH=""
+readonly BUILD_DIR="output"
+
+
+build() {
+	make clean all
+}
+
+deploy() {
+	aws s3 sync "$BUILD_DIR" "s3://${DEPLOY_BUCKET}/${DEPLOY_BUCKET_PATH}"
+}
+
+main() {
+	build
+	deploy
+}
+
+main
