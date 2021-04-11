@@ -1,0 +1,27 @@
+{{define "index"}}
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<title>beeceej.com</title>
+	<meta name="beeceej" content="beceej.com">
+	<meta name="brian jones" content="beeceej">
+	<link rel="stylesheet" href="/index.css">
+	<link rel="shortcut icon" href="/favicon.png">
+	<link rel="apple-touch-icon" href="favicon.png">
+  </head>
+  <body>
+	{{- template "nav" . -}}
+	{{if eq .PageID "about"}}
+	{{- template "about" . -}}
+	{{end}}
+	{{if eq .PageID "contact"}}
+	{{- template "contact" . -}}
+	{{end}}
+	{{if eq .PageID "notes-l"}}
+	{{- template "notes-l" . -}}
+	{{end}}
+  </body>
+</html>
+{{end}}
+{{- template "index" . -}}
