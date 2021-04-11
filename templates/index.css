@@ -11,7 +11,7 @@ body {
 a {
 	link-decoration: none;
 	text-decoration: none;
-	color: #46458e;
+	color: #02071f;
 }
 
 a:hover {
@@ -42,7 +42,8 @@ nav {
 .no-list-style {
 	list-style: none;
 	margin: 0;
-	padding: 0;}
+	padding: 0;
+}
 
 #about-page {
 	text-align: left;
