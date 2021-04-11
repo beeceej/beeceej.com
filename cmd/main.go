@@ -40,16 +40,18 @@ func makeOutputFile(path string) error {
 		err error
 		tpl *template.Template
 	)
-	if f, err = os.Create(filepath.Join("output", path)); err != nil {
-		return err
-	}
-	defer func() {
-		if err = f.Close(); err != nil {
-			panic(err.Error())
+	renderData, exists := templates[path]
+	if exists && renderData.PageToRender != "" {
+		if f, err = os.Create(filepath.Join("output", path)); err != nil {
+			return err
 		}
-	}()
+		defer func() {
+			if err = f.Close(); err != nil {
+				panic(err.Error())
+			}
+		}()
+	}
 
-	renderData := templates[path]
 	if renderData.PageToRender != "" {
 		tpl = template.Must(findAndParseTemplates("templates", nil))
 		return tpl.Lookup(renderData.PageToRender).Execute(f, renderData)
