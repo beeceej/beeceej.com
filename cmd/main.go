@@ -19,19 +19,21 @@ func main() {
 	must(makeOutputFile(filename))
 }
 
-type Data struct {
+// RenderData acts as a manifest for making run time decisions on which files to render,
+// and how to render a given file
+type RenderData struct {
 	PageToRender string
 	PageID       string
 }
 
-var templates = map[string]Data{
-	"about.html":   Data{PageToRender: "index.html", PageID: "about"},
-	"error.html":   Data{PageToRender: "index.html", PageID: "error"},
-	"contact.html": Data{PageToRender: "index.html", PageID: "contact"},
-	"footer.html":  Data{PageToRender: "index.html"},
-	"index.css":    Data{PageToRender: "index.css"},
-	"nav.html":     Data{PageToRender: "", PageID: "index.html"},
-	"notes/l.html": Data{PageToRender: "index.html", PageID: "notes-l"},
+var templates = map[string]RenderData{
+	"about.html":   {PageToRender: "index.html", PageID: "about"},
+	"error.html":   {PageToRender: "index.html", PageID: "error"},
+	"contact.html": {PageToRender: "index.html", PageID: "contact"},
+	"footer.html":  {PageToRender: "index.html"},
+	"index.css":    {PageToRender: "index.css"},
+	"nav.html":     {PageToRender: "", PageID: "index.html"},
+	"notes/l.html": {PageToRender: "index.html", PageID: "notes-l"},
 }
 
 func makeOutputFile(path string) error {
