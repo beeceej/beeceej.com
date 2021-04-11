@@ -1,0 +1,16 @@
+{{define "post_css"}}
+#post {
+	text-align: left;
+	color: grey;
+	padding-bottom: 50px;
+}
+
+#post h3 {
+	color: #02071f;
+}
+pre {
+	font-size: 16px;
+	background-color: #02071f;
+	color: limegreen;
+}
+{{end}}

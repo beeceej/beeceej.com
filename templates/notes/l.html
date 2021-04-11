@@ -3,5 +3,10 @@
   there used to be time<br>
   Surely there will be much more<br>
   perhaps there is not
+  <ul>
+	{{- range $post := .Other.Posts -}}
+    <li><a href="/{{$post.Path}}">{{$post.Title}}</a></li>
+	{{- end -}}
+  </ul>
 </div>
 {{end}}

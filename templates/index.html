@@ -21,6 +21,9 @@
 	{{if eq .PageID "notes-l"}}
 	{{- template "notes-l" . -}}
 	{{end}}
+	{{if eq .PageID "notes-note"}}
+	{{- template "notes-note" . -}}
+	{{end}}
 	{{if eq .PageID "error"}}
 	{{- template "error" . -}}
 	{{end}}

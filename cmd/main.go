@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"io/ioutil"
 	"os"
@@ -8,10 +9,55 @@ import (
 	"strings"
 )
 
+func contentPagePath(file string) string {
+	return filepath.Join("content", file)
+}
+
+type Post struct {
+	Content template.HTML
+	Path    string
+	Title   string
+}
+
+var (
+	helloWorldPost = Post{
+		Path:  "notes/0-hello-world.html",
+		Title: "Hello, World",
+	}
+	templates = map[string]RenderData{
+		"about.html":   {PageToRender: "index.html", PageID: "about"},
+		"error.html":   {PageToRender: "index.html", PageID: "error"},
+		"contact.html": {PageToRender: "index.html", PageID: "contact"},
+		"footer.html":  {PageToRender: "index.html", PageID: "footer"},
+		"index.css":    {PageToRender: "index.css", PageID: "index-css"},
+		"notes/l.html": {
+			PageToRender: "index.html",
+			PageID:       "notes-l",
+			Other: struct{ Posts []Post }{
+				Posts: []Post{helloWorldPost},
+			},
+		},
+		"notes/0-hello-world.html": {
+			ContentPagePath: contentPagePath("0-hello-world.html"),
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+			Other: helloWorldPost,
+		},
+	}
+)
+
+// RenderData acts as a manifest for making run time decisions on which files to render,
+// and how to render a given file
+type RenderData struct {
+	ContentPagePath string
+	PageToRender    string
+	PageID          string
+	Other           interface{}
+}
+
 func main() {
 	filename := filepath.Base(os.Args[1])
-	filename = filepath.Join(
-		strings.Split(filepath.FromSlash(os.Args[1]), string(os.PathSeparator))[1:]...)
+	filename = filepath.Join(strings.Split(filepath.FromSlash(os.Args[1]), string(os.PathSeparator))[1:]...)
 	path := filepath.Dir(os.Args[1])
 	if err := os.MkdirAll(path, 0755); err != nil && !os.IsExist(err) {
 		panic(err.Error())
@@ -19,21 +65,24 @@ func main() {
 	must(makeOutputFile(filename))
 }
 
-// RenderData acts as a manifest for making run time decisions on which files to render,
-// and how to render a given file
-type RenderData struct {
-	PageToRender string
-	PageID       string
-}
-
-var templates = map[string]RenderData{
-	"about.html":   {PageToRender: "index.html", PageID: "about"},
-	"error.html":   {PageToRender: "index.html", PageID: "error"},
-	"contact.html": {PageToRender: "index.html", PageID: "contact"},
-	"footer.html":  {PageToRender: "index.html"},
-	"index.css":    {PageToRender: "index.css"},
-	"nav.html":     {PageToRender: "", PageID: "index.html"},
-	"notes/l.html": {PageToRender: "index.html", PageID: "notes-l"},
+func augmentRenderData(d *RenderData) error {
+	if d == nil {
+		return fmt.Errorf("render data is nil")
+	}
+	if d.ContentPagePath != "" {
+		f, err := os.Open(d.ContentPagePath)
+		if err != nil {
+			return err
+		}
+		b, err := ioutil.ReadAll(f)
+		if err != nil {
+			return err
+		}
+		postData := d.Other.(Post)
+		postData.Content = template.HTML(string(b))
+		d.Other = postData
+	}
+	return nil
 }
 
 func makeOutputFile(path string) error {
@@ -43,7 +92,14 @@ func makeOutputFile(path string) error {
 		tpl *template.Template
 	)
 	renderData, exists := templates[path]
-	if exists && renderData.PageToRender != "" {
+	if !exists {
+		return nil
+	}
+	if err = augmentRenderData(&renderData); err != nil {
+		return err
+	}
+
+	if renderData.PageToRender != "" {
 		if f, err = os.Create(filepath.Join("output", path)); err != nil {
 			return err
 		}

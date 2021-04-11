@@ -6,5 +6,6 @@
 {{- template "contact_css" -}}
 {{- template "error_css" -}}
 {{- template "notes_l_css" -}}
+{{- template "post_css" -}}
 {{end}}
 {{- template "index_css" -}}
