@@ -6,7 +6,7 @@ TEMPLATES_PNG  := $(wildcard $(TEMPLATE)/*.png)
 OUTPUTS_HTML   := $(patsubst $(TEMPLATE)/%.html, $(OUTPUT)/%.html, $(TEMPLATES_HTML))
 OUTPUTS_CSS    := $(patsubst $(TEMPLATE)/%.css, $(OUTPUT)/%.css, $(TEMPLATES_CSS))
 OUTPUTS_PNG    := $(patsubst $(TEMPLATE)/%.png, $(OUTPUT)/%.png, $(TEMPLATES_PNG))
-GIT_COMMIT_HASH=$$(git rev-parse --short head)
+GIT_COMMIT_HASH=$$(git rev-parse --short HEAD)
 
 SRCS=$(wildcard cmd/*.go *.go)
 
