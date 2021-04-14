@@ -5,12 +5,21 @@ import (
 	"html/template"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 )
 
 func contentPagePath(file string) string {
 	return filepath.Join("content", file)
+}
+
+func commitHash() string {
+	hash, err := exec.Command("git", "rev-parse", "--short", "head").Output()
+	if err != nil {
+		panic(err.Error())
+	}
+	return strings.Trim(string(hash), " \n\r")
 }
 
 type Post struct {
@@ -41,7 +50,7 @@ var (
 			ContentPagePath: contentPagePath("0-hello-world.html"),
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
-			Other: helloWorldPost,
+			Other:           helloWorldPost,
 		},
 	}
 )
@@ -50,6 +59,7 @@ var (
 // and how to render a given file
 type RenderData struct {
 	ContentPagePath string
+	CommitHash      string
 	PageToRender    string
 	PageID          string
 	Other           interface{}
@@ -82,6 +92,7 @@ func augmentRenderData(d *RenderData) error {
 		postData.Content = template.HTML(string(b))
 		d.Other = postData
 	}
+	d.CommitHash = commitHash()
 	return nil
 }
 
