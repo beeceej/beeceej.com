@@ -6,16 +6,17 @@ TEMPLATES_PNG  := $(wildcard $(TEMPLATE)/*.png)
 OUTPUTS_HTML   := $(patsubst $(TEMPLATE)/%.html, $(OUTPUT)/%.html, $(TEMPLATES_HTML))
 OUTPUTS_CSS    := $(patsubst $(TEMPLATE)/%.css, $(OUTPUT)/%.css, $(TEMPLATES_CSS))
 OUTPUTS_PNG    := $(patsubst $(TEMPLATE)/%.png, $(OUTPUT)/%.png, $(TEMPLATES_PNG))
+GIT_COMMIT_HASH=$$(git rev-parse --short head)
 
 SRCS=$(wildcard cmd/*.go *.go)
 
 all: beeceej.com $(OUTPUTS_HTML) $(OUTPUTS_CSS) $(OUTPUTS_PNG)
 
 $(OUTPUT)/%.html: $(TEMPLATE)/%.html
-	./beeceej.com $@
+	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
 
 $(OUTPUT)/%.css: $(TEMPLATE)/%.css
-	./beeceej.com $@
+	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
 
 $(OUTPUT)/%.png: $(TEMPLATE)/%.png
 	cp $(TEMPLATE)/$(notdir $@) $@

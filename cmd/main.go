@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 )
@@ -15,11 +14,11 @@ func contentPagePath(file string) string {
 }
 
 func commitHash() string {
-	hash, err := exec.Command("git", "rev-parse", "--short", "head").Output()
-	if err != nil {
-		panic(err.Error())
+	hash := os.Getenv("GIT_COMMIT_HASH")
+	if hash != "" {
+		return hash
 	}
-	return strings.Trim(string(hash), " \n\r")
+	panic("no commit hash")
 }
 
 type Post struct {
