@@ -32,6 +32,11 @@ var (
 		Path:  "notes/0-hello-world.html",
 		Title: "Hello, World",
 	}
+	mountainGoatPost = Post{
+		Path:  "notes/1-mountain-goats.html",
+		Title: "Mountain Goats",
+	}
+
 	templates = map[string]RenderData{
 		"about.html":   {PageToRender: "index.html", PageID: "about"},
 		"error.html":   {PageToRender: "index.html", PageID: "error"},
@@ -42,7 +47,7 @@ var (
 			PageToRender: "index.html",
 			PageID:       "notes-l",
 			Other: struct{ Posts []Post }{
-				Posts: []Post{helloWorldPost},
+				Posts: []Post{mountainGoatPost, helloWorldPost},
 			},
 		},
 		"notes/0-hello-world.html": {
@@ -50,6 +55,12 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 			Other:           helloWorldPost,
+		},
+		"notes/1-mountain-goats.html": {
+			ContentPagePath: contentPagePath("1-mountain-goats.html"),
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+			Other:           mountainGoatPost,
 		},
 	}
 )
