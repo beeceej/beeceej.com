@@ -15,10 +15,10 @@ func contentPagePath(file string) string {
 
 func commitHash() string {
 	hash := os.Getenv("GIT_COMMIT_HASH")
-	if hash != "" {
-		return hash
+	if hash == "" {
+		panic("no commit hash")
 	}
-	panic("no commit hash")
+	return hash
 }
 
 type Post struct {
@@ -41,9 +41,9 @@ var (
 		Posted: "2021-04-14",
 	}
 	ackermannPost = Post{
-		Path:   "notes/2-ackerman-function-expansions.html",
-		Title:  "Ackermann Function Expansions",
-		Posted: "2021-04-16",
+		Path:    "notes/2-ackerman-function-expansions.html",
+		Title:   "Ackermann Function Expansions",
+		Posted:  "2021-04-16",
 		Updated: "2021-04-16",
 	}
 
@@ -67,11 +67,6 @@ var (
 			Description:  "Contact beeceej",
 			Keywords:     []string{},
 			PageID:       "contact",
-			PageToRender: "index.html",
-		},
-		"footer.html": {
-			Keywords:     []string{},
-			PageID:       "footer",
 			PageToRender: "index.html",
 		},
 		"index.css": {
