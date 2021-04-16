@@ -9,4 +9,13 @@
 	text-transform: uppercase;
 	width: 50%;
 }
+
+#contact-page li span {
+	margin-right: 50px;
+	display: inline-block;
+	width: 100px;
+}
+#contact-page a {
+	text-align: left;
+}
 {{end}}
