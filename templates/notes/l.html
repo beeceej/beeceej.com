@@ -7,7 +7,7 @@
   </em>
   <ul>
 	{{- range $post := .Other.Posts -}}
-    <li><a href="/{{$post.Path}}">{{$post.Title}}</a> <em>@{{$post.Posted}}{{if $post.Updated}}, *{{$post.Updated}}{{end}}</em> </li>
+    <li><a href="/{{$post.Path}}">{{$post.Title}}</a> <em>@{{$post.Posted}}{{if $post.Updated}},*{{$post.Updated}}{{end}}</em> </li>
 	{{- end -}}
   </ul>
 </div>
