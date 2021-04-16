@@ -1,8 +1,8 @@
 {{define "notes-l"}}
 <div id="notes-l-page">
-  there used to be time<br>
+  <em>there used to be time<br>
   Surely there will be much more<br>
-  perhaps there is not
+  perhaps there is not</em>
   <ul>
 	{{- range $post := .Other.Posts -}}
     <li><a href="/{{$post.Path}}">{{$post.Title}}</a> <em>@{{$post.Posted}}{{if $post.Updated}}, *{{$post.Updated}}{{end}}</em> </li>
