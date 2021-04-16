@@ -42,35 +42,89 @@ var (
 	}
 
 	templates = map[string]RenderData{
-		"about.html":   {PageToRender: "index.html", PageID: "about"},
-		"error.html":   {PageToRender: "index.html", PageID: "error"},
-		"contact.html": {PageToRender: "index.html", PageID: "contact"},
-		"footer.html":  {PageToRender: "index.html", PageID: "footer"},
-		"index.css":    {PageToRender: "index.css", PageID: "index-css"},
-		"notes/l.html": {
+		"robots.txt": {
+			PageToRender: "robots.txt",
+		},
+		"about.html": {
+			Description:  "about beeceej",
+			Keywords:     []string{},
+			PageID:       "about",
 			PageToRender: "index.html",
+		},
+		"error.html": {
+			Description: "How'd you get here? this is an error page",
+			Keywords:     []string{},
+			PageID:       "error",
+			PageToRender: "index.html",
+		},
+		"contact.html": {
+			Description: "Contact beeceej",
+			Keywords:     []string{},
+			PageID:       "contact",
+			PageToRender: "index.html",
+		},
+		"footer.html": {
+			Keywords:     []string{},
+			PageID:       "footer",
+			PageToRender: "index.html",
+		},
+		"index.css": {
+			Keywords:     []string{},
+			PageID:       "index-css",
+			PageToRender: "index.css",
+		},
+		"notes/l.html": {
+			Keywords:     []string{},
 			PageID:       "notes-l",
+			PageToRender: "index.html",
 			Other: struct{ Posts []Post }{
 				Posts: []Post{ackermanPost, mountainGoatPost, helloWorldPost},
 			},
 		},
 		"notes/0-hello-world.html": {
 			ContentPagePath: contentPagePath("0-hello-world.html"),
-			PageID:          "notes-note",
-			PageToRender:    "index.html",
-			Other:           helloWorldPost,
+			Description: "First blog post",
+			Keywords: []string{
+				"programming",
+				"Hello world",
+				"simple",
+				"frontend",
+				"blog",
+				"go",
+				"golang",
+			},
+			Other:        helloWorldPost,
+			PageID:       "notes-note",
+			PageToRender: "index.html",
 		},
 		"notes/1-mountain-goats.html": {
 			ContentPagePath: contentPagePath("1-mountain-goats.html"),
-			PageID:          "notes-note",
-			PageToRender:    "index.html",
-			Other:           mountainGoatPost,
+			Description:     "Mountain Goat escapes enclosure, bound for greener greener grass, and taller mountains",
+			Keywords: []string{
+				"programming",
+				"allegory",
+				"goat",
+				"cloud",
+				"mountain",
+			},
+			Other:        mountainGoatPost,
+			PageID:       "notes-note",
+			PageToRender: "index.html",
 		},
 		"notes/2-ackerman-function-expansions.html": {
 			ContentPagePath: contentPagePath("2-ackerman-function-expansions.html"),
-			PageID:          "notes-note",
-			PageToRender:    "index.html",
-			Other:           ackermanPost,
+			Description:     "Ackermann function expansion in scheme",
+			Keywords: []string{
+				"programming",
+				"lisp",
+				"guile",
+				"scheme",
+				"sicp",
+				"mit",
+			},
+			Other:        ackermanPost,
+			PageID:       "notes-note",
+			PageToRender: "index.html",
 		},
 	}
 )
@@ -78,11 +132,13 @@ var (
 // RenderData acts as a manifest for making run time decisions on which files to render,
 // and how to render a given file
 type RenderData struct {
-	ContentPagePath string
 	CommitHash      string
-	PageToRender    string
-	PageID          string
+	ContentPagePath string
+	Description     string
+	Keywords        []string
 	Other           interface{}
+	PageID          string
+	PageToRender    string
 }
 
 func main() {
@@ -177,6 +233,7 @@ func findAndParseTemplates(rootDir string, funcMap template.FuncMap) (*template.
 
 		name := path[len(cleanRoot)+1:]
 		t := root.New(name).Funcs(funcMap)
+		t.Funcs(template.FuncMap{"JoinStr": strings.Join})
 		_, err = t.Parse(string(templateBytes))
 		return err
 	})
