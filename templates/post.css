@@ -7,11 +7,19 @@
 
 #post h3 {
 	color: #02071f;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 }
+
 pre {
 	font-size: 16px;
 	background-color: #02071f;
 	color: limegreen;
 	overflow: scroll;
+}
+
+em {
+	color: grey;
+	font-size: 20px;
 }
 {{end}}
