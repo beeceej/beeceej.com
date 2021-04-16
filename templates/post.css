@@ -12,5 +12,6 @@ pre {
 	font-size: 16px;
 	background-color: #02071f;
 	color: limegreen;
+	overflow: scroll;
 }
 {{end}}
