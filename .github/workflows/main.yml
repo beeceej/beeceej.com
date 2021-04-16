@@ -20,5 +20,6 @@ jobs:
     - name: Deploy
       env:
         DEPLOY_BUCKET: ${{ secrets.DEPLOY_BUCKET }}
+        CLOUDFRONT_DIST_ID: ${{ secrets.CLOUDFRONT_DIST_ID }}
       run: |
         bin/deploy
