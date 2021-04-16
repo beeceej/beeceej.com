@@ -36,6 +36,10 @@ var (
 		Path:  "notes/1-mountain-goats.html",
 		Title: "Mountain Goats",
 	}
+	ackermanPost = Post{
+		Path:  "notes/2-ackerman-function-expansions.html",
+		Title: "Ackerman Function Expansions",
+	}
 
 	templates = map[string]RenderData{
 		"about.html":   {PageToRender: "index.html", PageID: "about"},
@@ -47,7 +51,7 @@ var (
 			PageToRender: "index.html",
 			PageID:       "notes-l",
 			Other: struct{ Posts []Post }{
-				Posts: []Post{mountainGoatPost, helloWorldPost},
+				Posts: []Post{ackermanPost, mountainGoatPost, helloWorldPost},
 			},
 		},
 		"notes/0-hello-world.html": {
@@ -61,6 +65,12 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 			Other:           mountainGoatPost,
+		},
+		"notes/2-ackerman-function-expansions.html": {
+			ContentPagePath: contentPagePath("2-ackerman-function-expansions.html"),
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+			Other:           ackermanPost,
 		},
 	}
 )
