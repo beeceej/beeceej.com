@@ -13,7 +13,7 @@ build() {
 
 deploy() {
 	aws s3 sync "$BUILD_DIR" "s3://${DEPLOY_BUCKET}/${DEPLOY_BUCKET_PATH}"
-	aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DIST_ID" --paths "*"
+	aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DIST_ID" --paths "/*"
 }
 
 main() {
