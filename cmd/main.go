@@ -31,18 +31,18 @@ type Post struct {
 
 var (
 	helloWorldPost = Post{
-		Path:  "notes/0-hello-world.html",
-		Title: "Hello, World",
+		Path:   "notes/0-hello-world.html",
+		Title:  "Hello, World",
 		Posted: "2021-04-11",
 	}
 	mountainGoatPost = Post{
-		Path:  "notes/1-mountain-goats.html",
-		Title: "Mountain Goats",
+		Path:   "notes/1-mountain-goats.html",
+		Title:  "Mountain Goats",
 		Posted: "2021-04-14",
 	}
-	ackermanPost = Post{
-		Path:  "notes/2-ackerman-function-expansions.html",
-		Title: "Ackerman Function Expansions",
+	ackermannPost = Post{
+		Path:   "notes/2-ackerman-function-expansions.html",
+		Title:  "Ackermann Function Expansions",
 		Posted: "2021-04-16",
 		Updated: "2021-04-16",
 	}
@@ -58,13 +58,13 @@ var (
 			PageToRender: "index.html",
 		},
 		"error.html": {
-			Description: "How'd you get here? this is an error page",
+			Description:  "How'd you get here? this is an error page",
 			Keywords:     []string{},
 			PageID:       "error",
 			PageToRender: "index.html",
 		},
 		"contact.html": {
-			Description: "Contact beeceej",
+			Description:  "Contact beeceej",
 			Keywords:     []string{},
 			PageID:       "contact",
 			PageToRender: "index.html",
@@ -84,12 +84,12 @@ var (
 			PageID:       "notes-l",
 			PageToRender: "index.html",
 			Other: struct{ Posts []Post }{
-				Posts: []Post{ackermanPost, mountainGoatPost, helloWorldPost},
+				Posts: []Post{ackermannPost, mountainGoatPost, helloWorldPost},
 			},
 		},
 		"notes/0-hello-world.html": {
 			ContentPagePath: contentPagePath("0-hello-world.html"),
-			Description: "First blog post",
+			Description:     "First blog post",
 			Keywords: []string{
 				"programming",
 				"Hello world",
@@ -128,7 +128,7 @@ var (
 				"sicp",
 				"mit",
 			},
-			Other:        ackermanPost,
+			Other:        ackermannPost,
 			PageID:       "notes-note",
 			PageToRender: "index.html",
 		},
