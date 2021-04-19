@@ -8,7 +8,7 @@ OUTPUTS_HTML   := $(patsubst $(TEMPLATE)/%.html, $(OUTPUT)/%.html, $(TEMPLATES_H
 OUTPUTS_CSS    := $(patsubst $(TEMPLATE)/%.css, $(OUTPUT)/%.css, $(TEMPLATES_CSS))
 OUTPUTS_PNG    := $(patsubst $(TEMPLATE)/%.png, $(OUTPUT)/%.png, $(TEMPLATES_PNG))
 OUTPUTS_TXT    := $(patsubst $(TEMPLATE)/%.txt, $(OUTPUT)/%.txt, $(TEMPLATES_TXT))
-GIT_COMMIT_HASH=$$(git rev-parse --short HEAD)
+GIT_COMMIT_HASH=$(shell git rev-parse --short HEAD)
 
 SRCS=$(wildcard cmd/*.go *.go)
 
