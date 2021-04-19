@@ -46,6 +46,11 @@ var (
 		Posted:  "2021-04-16",
 		Updated: "2021-04-16",
 	}
+	goodAdvice = Post{
+		Path:    "notes/3-good-advice.html",
+		Title:   "Guy Clark On Good Advice",
+		Posted:  "2021-04-19",
+	}
 
 	templates = map[string]RenderData{
 		"robots.txt": {
@@ -79,7 +84,7 @@ var (
 			PageID:       "notes-l",
 			PageToRender: "index.html",
 			Other: struct{ Posts []Post }{
-				Posts: []Post{ackermannPost, mountainGoatPost, helloWorldPost},
+				Posts: []Post{goodAdvice, ackermannPost, mountainGoatPost, helloWorldPost},
 			},
 		},
 		"notes/0-hello-world.html": {
@@ -124,6 +129,23 @@ var (
 				"mit",
 			},
 			Other:        ackermannPost,
+			PageID:       "notes-note",
+			PageToRender: "index.html",
+		},
+		"notes/3-good-advice.html": {
+			ContentPagePath: contentPagePath("3-good-advice.html"),
+			Description:     "Guy Clark on good advice",
+			Keywords: []string{
+				"Guy Clark",
+				"outlaw",
+				"music",
+				"random",
+				"thoughts",
+				"mit",
+				"texas",
+				"country",
+			},
+			Other:        goodAdvice,
 			PageID:       "notes-note",
 			PageToRender: "index.html",
 		},
