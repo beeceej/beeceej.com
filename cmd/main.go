@@ -50,6 +50,7 @@ var (
 		Path:    "notes/3-good-advice.html",
 		Title:   "Guy Clark On Good Advice",
 		Posted:  "2021-04-19",
+		Updated: "2021-04-20",
 	}
 
 	templates = map[string]RenderData{
