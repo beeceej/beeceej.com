@@ -1,7 +1,8 @@
 TEMPLATE        := templates
 OUTPUT          := output
 TPL             := $(wildcard $(TEMPLATE)/*.css) \
-                   $(shell find templates -name "*.html")
+                   $(shell find templates -name "*.html") \
+                   $(wildcard content/*)
 TPL_OUT         := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(TPL))
 STATIC          := $(wildcard $(TEMPLATE)/*.png) \
                    $(wildcard $(TEMPLATE)/*.txt)
