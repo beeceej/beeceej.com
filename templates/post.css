@@ -11,27 +11,24 @@
 	padding-bottom: 0px;
 }
 
-pre {
+#post pre {
 	font-size: 16px;
 	background-color: #02071f;
 	color: limegreen;
 	overflow: scroll;
 }
 
-@media only screen and (max-width: 600px) {
-  pre {
-	font-size: 12px;
-  }
-}
-
-em {
+#post em {
 	color: grey;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 @media only screen and (max-width: 600px) {
-  pre {
-	font-size: 16px;
-  }
+	#post pre {
+		font-size: 10px;
+	}
+	#post em {
+		font-size: 10px;
+	}
 }
 {{end}}
