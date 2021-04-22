@@ -1,31 +1,27 @@
-TEMPLATE := templates
-OUTPUT := output
-TEMPLATES_HTML := $(shell find templates -name "*.html")
-TEMPLATES_CSS  := $(wildcard $(TEMPLATE)/*.css)
-TEMPLATES_PNG  := $(wildcard $(TEMPLATE)/*.png)
-TEMPLATES_TXT  := $(wildcard $(TEMPLATE)/*.txt)
-OUTPUTS_HTML   := $(patsubst $(TEMPLATE)/%.html, $(OUTPUT)/%.html, $(TEMPLATES_HTML))
-OUTPUTS_CSS    := $(patsubst $(TEMPLATE)/%.css, $(OUTPUT)/%.css, $(TEMPLATES_CSS))
-OUTPUTS_PNG    := $(patsubst $(TEMPLATE)/%.png, $(OUTPUT)/%.png, $(TEMPLATES_PNG))
-OUTPUTS_TXT    := $(patsubst $(TEMPLATE)/%.txt, $(OUTPUT)/%.txt, $(TEMPLATES_TXT))
-GIT_COMMIT_HASH=$(shell git rev-parse --short HEAD)
+TEMPLATE        := templates
+OUTPUT          := output
+TPL             := $(wildcard $(TEMPLATE)/*.css) \
+                   $(shell find templates -name "*.html")
+TPL_OUT         := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(TPL))
+STATIC          := $(wildcard $(TEMPLATE)/*.png) \
+                   $(wildcard $(TEMPLATE)/*.txt)
+STATIC_OUT      := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(STATIC))
+SRCS            := $(wildcard cmd/*.go *.go)
+GIT_COMMIT_HASH := $(shell git rev-parse --short HEAD)
 
-SRCS=$(wildcard cmd/*.go *.go)
-
-all: beeceej.com $(OUTPUTS_HTML) $(OUTPUTS_CSS) $(OUTPUTS_PNG) $(OUTPUTS_TXT)
-
-$(OUTPUT)/%.html: $(TEMPLATE)/%.html
+$(OUTPUT)/%.html: beeceej.com $(TPL)
 	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
 
-$(OUTPUT)/%.css: $(TEMPLATE)/%.css
+$(OUTPUT)/%.css: beeceej.com $(TPL)
 	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
 
-$(OUTPUT)/%.png: $(TEMPLATE)/%.png
+$(OUTPUT)/%.png: beeceej.com $(STATIC)
 	cp $(TEMPLATE)/$(notdir $@) $@
 
-$(OUTPUT)/%.txt: $(TEMPLATE)/%.txt
+$(OUTPUT)/%.txt: beeceej.com $(STATIC)
 	cp $(TEMPLATE)/$(notdir $@) $@
 
+all: beeceej.com $(STATIC_OUT) $(TPL_OUT)
 
 beeceej.com: $(SRCS)
 	go build -o beeceej.com cmd/main.go
