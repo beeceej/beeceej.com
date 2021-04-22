@@ -21,7 +21,7 @@ $(OUTPUT)/%.png: beeceej.com $(STATIC)
 $(OUTPUT)/%.txt: beeceej.com $(STATIC)
 	cp $(TEMPLATE)/$(notdir $@) $@
 
-all: beeceej.com $(STATIC_OUT) $(TPL_OUT)
+all: beeceej.com $(TPL_OUT) $(STATIC_OUT)
 
 beeceej.com: $(SRCS)
 	go build -o beeceej.com cmd/main.go
