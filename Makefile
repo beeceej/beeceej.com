@@ -7,7 +7,7 @@ TPL_OUT         := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(TPL))
 STATIC          := $(wildcard $(TEMPLATE)/*.png) \
                    $(wildcard $(TEMPLATE)/*.txt)
 STATIC_OUT      := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(STATIC))
-SRCS            := $(wildcard cmd/*.go *.go)
+SRCS            := $(wildcard cmd/*.go *.go posts/*.go)
 GIT_COMMIT_HASH := $(shell git rev-parse --short HEAD)
 
 $(OUTPUT)/%.html: beeceej.com $(TPL)
