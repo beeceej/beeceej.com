@@ -7,6 +7,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/beeceej/beeceej.com/posts"
 )
 
 func contentPagePath(file string) string {
@@ -21,38 +23,7 @@ func commitHash() string {
 	return hash
 }
 
-type Post struct {
-	Content template.HTML
-	Path    string
-	Title   string
-	Posted  string
-	Updated string
-}
-
 var (
-	helloWorldPost = Post{
-		Path:   "notes/0-hello-world.html",
-		Title:  "Hello, World",
-		Posted: "2021-04-11",
-	}
-	mountainGoatPost = Post{
-		Path:   "notes/1-mountain-goats.html",
-		Title:  "Mountain Goats",
-		Posted: "2021-04-14",
-	}
-	ackermannPost = Post{
-		Path:    "notes/2-ackerman-function-expansions.html",
-		Title:   "Ackermann Function Expansions",
-		Posted:  "2021-04-16",
-		Updated: "2021-04-16",
-	}
-	goodAdvice = Post{
-		Path:    "notes/3-good-advice.html",
-		Title:   "Guy Clark On Good Advice",
-		Posted:  "2021-04-19",
-		Updated: "2021-04-20",
-	}
-
 	templates = map[string]RenderData{
 		"robots.txt": {
 			PageToRender: "robots.txt",
@@ -84,8 +55,8 @@ var (
 			Keywords:     []string{},
 			PageID:       "notes-l",
 			PageToRender: "index.html",
-			Other: struct{ Posts []Post }{
-				Posts: []Post{goodAdvice, ackermannPost, mountainGoatPost, helloWorldPost},
+			Other: struct{ Posts []posts.Post }{
+				Posts: posts.Posts,
 			},
 		},
 		"notes/0-hello-world.html": {
@@ -100,7 +71,7 @@ var (
 				"go",
 				"golang",
 			},
-			Other:        helloWorldPost,
+			Other:        posts.HelloWorld,
 			PageID:       "notes-note",
 			PageToRender: "index.html",
 		},
@@ -114,7 +85,7 @@ var (
 				"cloud",
 				"mountain",
 			},
-			Other:        mountainGoatPost,
+			Other:        posts.MountainGoat,
 			PageID:       "notes-note",
 			PageToRender: "index.html",
 		},
@@ -129,7 +100,7 @@ var (
 				"sicp",
 				"mit",
 			},
-			Other:        ackermannPost,
+			Other:        posts.Ackermann,
 			PageID:       "notes-note",
 			PageToRender: "index.html",
 		},
@@ -188,7 +159,7 @@ func augmentRenderData(d *RenderData) error {
 		if err != nil {
 			return err
 		}
-		postData := d.Other.(Post)
+		postData := d.Other.(posts.Post)
 		postData.Content = template.HTML(string(b))
 		d.Other = postData
 	}
