@@ -28,5 +28,12 @@ var (
 		Updated: "2021-04-16",
 	}
 
-	Posts = []Post{Ackermann, MountainGoat, HelloWorld}
+	GoodAdvice = Post{
+		Path:    "notes/3-good-advice.html",
+		Title:   "Guy Clark On Good Advice",
+		Posted:  "2021-04-19",
+		Updated: "2021-04-20",
+	}
+
+	Posts = []Post{GoodAdvice, Ackermann, MountainGoat, HelloWorld}
 )

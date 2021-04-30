@@ -117,7 +117,7 @@ var (
 				"texas",
 				"country",
 			},
-			Other:        goodAdvice,
+			Other:        posts.GoodAdvice,
 			PageID:       "notes-note",
 			PageToRender: "index.html",
 		},
