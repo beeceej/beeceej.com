@@ -121,6 +121,14 @@ var (
 			PageID:       "notes-note",
 			PageToRender: "index.html",
 		},
+		"notes/4-matching-parens.html": {
+			ContentPagePath: contentPagePath("4-matching-parens.html"),
+			Description:     "javascript demo of parentheses matching",
+			Keywords:        []string{},
+			Other:           posts.MatchingParens,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 

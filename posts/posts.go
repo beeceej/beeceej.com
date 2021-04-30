@@ -27,13 +27,17 @@ var (
 		Posted:  "2021-04-16",
 		Updated: "2021-04-16",
 	}
-
 	GoodAdvice = Post{
 		Path:    "notes/3-good-advice.html",
 		Title:   "Guy Clark On Good Advice",
 		Posted:  "2021-04-19",
 		Updated: "2021-04-20",
 	}
+	MatchingParens = Post{
+		Path:    "notes/4-matching-parens.html",
+		Title:   "Matching Parens",
+		Posted:  "2021-04-30",
+	}
 
-	Posts = []Post{GoodAdvice, Ackermann, MountainGoat, HelloWorld}
+	Posts = []Post{MatchingParens, GoodAdvice, Ackermann, MountainGoat, HelloWorld}
 )

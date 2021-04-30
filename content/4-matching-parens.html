@@ -1,0 +1,122 @@
+The text area below is filled with some lisp code. You can try typing some parentheses that match up with one another. Or write more lisp, just don't try and evaluate it<br>
+view at the javascript at your own risk ;)
+<br>
+<br>
+<div id="app"></div>
+<script>
+  let colors = {
+    0: "cyan",
+    1: "deeppink",
+    2: "thistle",
+    3: "crimson",
+    4: "yellow",
+    5: "magenta",
+    6: "deepskyblue",
+    7: "blueviolet",
+    8: "red",
+    9: "violet",
+    10: "orange"
+  };
+  function highlight(text, open, close) {
+    let theOpen = open;
+    let theClose = close;
+    if (!theOpen) {
+      theOpen = "(";
+    }
+    if (!theClose) {
+      theClose = ")";
+    }
+
+    let colorIndex = {};
+    if (!text) return "";
+    let resultDiv = document.createElement("div");
+    let iterableText = [...text];
+    let parens = [];
+    let matches = { valid: true, m: {} };
+    let matchCount = 0;
+    let addIfOpen = function(c, idx) {
+      c === theOpen ? parens.push(idx) : null;
+    };
+    let matchIfClose = function(c, idx) {
+      if (c !== theClose) {
+        return;
+      }
+      let match = parens.slice(-1)[0];
+      parens = parens.slice(0, parens.length - 1);
+
+      matches.m[match] = { idx, matchCount };
+      matchCount++;
+    };
+    iterableText.forEach((char, idx) => {
+      if (idx === 0 && char !== theOpen) {
+        matches.valid = false;
+        return;
+      }
+      addIfOpen(char, idx);
+      matchIfClose(char, idx);
+    });
+    if (!text) {
+      resultDiv = null;
+    } else {
+      [...text].forEach(function(c, idx) {
+        if (idx in matches.m) {
+          let col = colors[matches.m[idx].matchCount % 10];
+          colorIndex[idx] = col;
+          colorIndex[matches.m[idx].idx] = col;
+        }
+      });
+      let resultInnerHTML = '<pre style="font-size:24px">';
+      [...text].forEach(function(c, idx) {
+        if (idx in colorIndex) {
+          resultInnerHTML += `<span style="color: ${colorIndex[idx]}; font-weight: bold">`;
+          if (idx in matches.m) {
+            resultInnerHTML += `${theOpen}</span>`;
+          } else {
+            resultInnerHTML += `${theClose}</span>`;
+          }
+        } else {
+          resultInnerHTML += c;
+        }
+      });
+      resultDiv.innerHTML = `${resultInnerHTML}</pre>`;
+    }
+    return resultDiv;
+  }
+  function init() {
+    let app = document.getElementById("app");
+    let ta = document.createElement("textarea");
+    let resultDiv = document.createElement("div");
+    let handleTextAreInput = function(event) {
+      let result = highlight(event.target.value);
+      if (resultDiv.children.length === 0) {
+        resultDiv.appendChild(result);
+        return;
+      }
+      resultDiv.replaceChild(
+        result ? result : document.createElement("span"),
+        resultDiv.children[0]
+      );
+    };
+    ta.style.width = "30%";
+    ta.style.height = "300px";
+    ta.defaultValue = `(defun plus-one (a)
+  (+ 1 a))
+
+(defun plus-two (a)
+  (plus-one (plus-one a)))
+
+(defun square (a)
+  (* a a))
+`;
+    handleTextAreInput({ target: { value: ta.defaultValue } });
+    ta.addEventListener("input", handleTextAreInput);
+    app.appendChild(ta);
+    app.appendChild(resultDiv);
+    return {
+      app,
+      ta,
+      resultDiv
+    };
+  }
+  let app = init();
+</script>
