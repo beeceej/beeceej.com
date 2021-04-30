@@ -37,6 +37,7 @@ var (
 		Path:    "notes/4-matching-parens.html",
 		Title:   "Matching Parens",
 		Posted:  "2021-04-30",
+		Updated: "2021-04-30",
 	}
 
 	Posts = []Post{MatchingParens, GoodAdvice, Ackermann, MountainGoat, HelloWorld}
