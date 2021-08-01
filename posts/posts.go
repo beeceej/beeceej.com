@@ -39,6 +39,18 @@ var (
 		Posted:  "2021-04-30",
 		Updated: "2021-04-30",
 	}
+	PeppersIntro = Post{
+		Path:    "notes/5-peppers-intro.html",
+		Title:   "Peppers Intro",
+		Posted:  "2021-08-01",
+		Updated: "2021-08-01",
+	}
 
-	Posts = []Post{MatchingParens, GoodAdvice, Ackermann, MountainGoat, HelloWorld}
+	Posts = []Post{
+		PeppersIntro,
+		MatchingParens,
+		GoodAdvice,
+		Ackermann,
+		MountainGoat,
+		HelloWorld}
 )

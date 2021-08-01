@@ -129,6 +129,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/5-peppers-intro.html": {
+			ContentPagePath: contentPagePath("5-peppers-intro.html"),
+			Description:     "Log of growing peppers entry number 1",
+			Keywords:        []string{"Hot pepper", "capsaicin", "Trinidat Moruga Scorpion", "Aerogarden"},
+			Other:           posts.PeppersIntro,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
@@ -225,7 +233,7 @@ func findAndParseTemplates(rootDir string, funcMap template.FuncMap) (*template.
 		if info.IsDir() {
 			return nil
 		}
-		if filepath.Ext(path) == ".png" {
+		if filepath.Ext(path) == ".png" || filepath.Ext(path) == ".jpg" {
 			return nil
 		}
 
