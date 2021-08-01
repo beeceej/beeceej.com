@@ -225,7 +225,7 @@ func findAndParseTemplates(rootDir string, funcMap template.FuncMap) (*template.
 		if info.IsDir() {
 			return nil
 		}
-		if filepath.Ext(path) == ".png" {
+		if filepath.Ext(path) == ".png" || filepath.Ext(path) == ".jpg" {
 			return nil
 		}
 
