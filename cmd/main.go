@@ -137,6 +137,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/6-mutable-call-args-in-python.html": {
+			ContentPagePath: contentPagePath("6-mutable-call-args-in-python.html"),
+			Description:     "How Mutable arguments in python caused test assertions to behave unexpectedly",
+			Keywords:        []string{"python", "mutability"},
+			Other:           posts.MutableCallArgsInPython,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 

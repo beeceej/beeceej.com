@@ -45,8 +45,15 @@ var (
 		Posted:  "2021-08-01",
 		Updated: "2021-08-01",
 	}
+	MutableCallArgsInPython = Post{
+		Path:    "notes/6-mutable-call-args-in-python.html",
+		Title:   "Mutable Call Arguments in Python",
+		Posted:  "2021-08-25",
+		Updated: "2021-08-25",
+	}
 
 	Posts = []Post{
+		MutableCallArgsInPython,
 		PeppersIntro,
 		MatchingParens,
 		GoodAdvice,
