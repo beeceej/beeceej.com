@@ -1,0 +1,87 @@
+I spent a bit more time on this issue than I'd like to admit, but here's what was going on and what the issue was...
+
+<br>
+
+I wanted to test that the following class correctly split up the records, and called the <pre style="display: inline">process</pre> function in proper batches
+
+<pre>
+class EventHandler:
+    def __init__(self, processor, process_after):
+        self.processor = processor
+        self.process_after = process_after
+
+    def handle(self, records):
+        seen = 0
+        batch = []
+        for record in records:
+            if seen == self.process_after:
+                self.processor.process(batch)
+                seen = 0
+                batch.clear()
+            seen = seen + 1
+            batch.append(record)
+        if batch:
+            self.processor.process(batch)
+            seen = 0
+            batch.clear()
+</pre>
+
+I ended up with an initial test that looked like this:
+<pre>
+from unittest import mock
+
+from src import handler
+
+
+def test_handler():
+    mock_processor = mock.Mock()
+    h = handler.EventHandler(processor=mock_processor, process_after=2)
+
+    h.handle(["1", "2", "3", "4"])
+
+    assert mock_processor.process.call_count == 2
+
+</pre>
+
+That worked just fine, but then, I wanted to assert that the specific calls to <pre style="display: inline">process</pre> contained the correct arguments.
+So I added the following assertions:
+
+<pre>
+    assert mock_processor.process.call_args_list[0][0] == (["1", "2"],)
+    assert mock_processor.process.call_args_list[1][0] == (["3", "4"],)
+</pre>
+
+In theory this should have worked just fine, but pytest reported that the calls were actually empty...
+<pre>
+    def test_handler():
+        mock_processor = mock.Mock()
+        h = handler.EventHandler(processor=mock_processor, process_after=2)
+
+        h.handle(["1", "2", "3", "4"])
+
+        assert mock_processor.process.call_count == 2
+
+>       assert mock_processor.process.call_args_list[0][0] == (["1", "2"],)
+E       AssertionError: assert ([],) == (['1', '2'],)
+E         At index 0 diff: [] != ['1', '2']
+E         Use -v to get the full diff
+</pre>
+
+This is where I scratched my head, I even added print statements just before I called <pre style="display: inline">process</pre> and it printed the correct call args.
+After a few hours of adding breakpoints and stepping through the code, I realized the issue had to do with mutable lists. Particularly the call to <pre style="display: inline">batch.clear()</pre>
+<br>
+I replaced the call to <pre style="display: inline">batch.clear()</pre> with <pre style="display: inline">batch = []</pre> and once I did that pytest reported success.
+
+<pre>
+    platform darwin -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: /Users/beeceej/Code/beeceej/mutable_call_args
+collected 1 item
+
+tests/handler_test.py .                                                                                                                                                                                          [100%]
+
+== 1 passed in 0.05s ==
+</pre>
+
+Note to self, <pre style="display:inline;">Mock#call_args_list</pre> are mutable, so if your application code mutates params, you won't be able make assertions against them.
+<br>
+...Thanks Python...
