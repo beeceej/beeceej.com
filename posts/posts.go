@@ -51,8 +51,15 @@ var (
 		Posted:  "2021-08-25",
 		Updated: "2021-08-25",
 	}
+	PeppersPartTwo = Post{
+		Path:    "notes/7-peppers-part-2.html",
+		Title:   "Peppers Part 2: The Flowering",
+		Posted:  "2021-09-22",
+		Updated:  "2021-09-22",
+	}
 
 	Posts = []Post{
+		PeppersPartTwo,
 		MutableCallArgsInPython,
 		PeppersIntro,
 		MatchingParens,

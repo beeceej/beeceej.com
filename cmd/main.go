@@ -132,7 +132,7 @@ var (
 		"notes/5-peppers-intro.html": {
 			ContentPagePath: contentPagePath("5-peppers-intro.html"),
 			Description:     "Log of growing peppers entry number 1",
-			Keywords:        []string{"Hot pepper", "capsaicin", "Trinidat Moruga Scorpion", "Aerogarden"},
+			Keywords:        []string{"Hot pepper", "capsaicin", "Trinidad Moruga Scorpion", "Aerogarden"},
 			Other:           posts.PeppersIntro,
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
@@ -142,6 +142,14 @@ var (
 			Description:     "How Mutable arguments in python caused test assertions to behave unexpectedly",
 			Keywords:        []string{"python", "mutability"},
 			Other:           posts.MutableCallArgsInPython,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
+		"notes/7-peppers-part-2.html": {
+			ContentPagePath: contentPagePath("7-peppers-part-2.html"),
+			Description:     "Log of growing peppers entry number 2",
+			Keywords:        []string{"Hot pepper", "capsaicin", "Trinidad Moruga Scorpion", "Aerogarden"},
+			Other:           posts.PeppersPartTwo,
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
