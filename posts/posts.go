@@ -55,7 +55,7 @@ var (
 		Path:    "notes/7-peppers-part-2.html",
 		Title:   "Peppers Part 2: The Flowering",
 		Posted:  "2021-09-22",
-		Updated:  "2021-09-22",
+		Updated:  "2021-09-24",
 	}
 	ModernFrontendProblems = Post{
 		Path:    "notes/8-the-problem-with-modern-web-development.html",
