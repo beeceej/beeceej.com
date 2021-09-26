@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"io/ioutil"
 	"os"
@@ -203,8 +202,8 @@ func main() {
 }
 
 func augmentRenderData(d *RenderData) error {
-	if d == nil {
-		return fmt.Errorf("render data is nil")
+	if d == nil { // No RenderData, so nothing to do
+		return nil
 	}
 	if d.ContentPagePath != "" {
 		f, err := os.Open(d.ContentPagePath)
