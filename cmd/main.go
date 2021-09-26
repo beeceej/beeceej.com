@@ -230,9 +230,7 @@ func makeOutputFile(path string) error {
 				panic(err.Error())
 			}
 		}()
-	}
 
-	if renderData.PageToRender != "" {
 		tpl = template.Must(findAndParseTemplates("templates", nil))
 		return tpl.Lookup(renderData.PageToRender).Execute(f, renderData)
 	}
