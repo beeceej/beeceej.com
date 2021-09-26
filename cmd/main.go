@@ -167,13 +167,29 @@ var (
 // RenderData acts as a manifest for making run time decisions on which files to render,
 // and how to render a given file
 type RenderData struct {
-	CommitHash      string
+	// CommitHash is the commit hash of the repository, used for
+	// exposing the version of the statically generated site.
+	CommitHash string
+
+	// ContentPagePath is the path of the content page
+	// This page will be loaded in if requested, and used as input into a template file
 	ContentPagePath string
-	Description     string
-	Keywords        []string
-	Other           interface{}
-	PageID          string
-	PageToRender    string
+
+	// Description is the description of a page, inserted into the description meta tag
+	Description string
+
+	// Keywords is a set of keywords inserted into the keywords meta tag
+	Keywords []string
+
+	// Other is an arbitrary structure used for rendering dynamic pages
+	Other interface{}
+
+	// PageID is used for the templating engine to
+	// make runtime decisions on which template to render
+	PageID string
+
+	// PageToRender is the name of template to use when rendering.
+	PageToRender string
 }
 
 func main() {
