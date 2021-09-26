@@ -260,6 +260,7 @@ func must(errs ...error) {
 	}
 }
 
+// findAndParseTemplates walks the file system recursively parsing templates as it goes.
 func findAndParseTemplates(rootDir string, funcMap template.FuncMap) (*template.Template, error) {
 	cleanRoot := filepath.Clean(rootDir)
 	root := template.New("")
