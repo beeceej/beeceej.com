@@ -1,5 +1,6 @@
 TEMPLATE        := templates
 OUTPUT          := output
+CONTENT         := content
 TPL             := $(wildcard $(TEMPLATE)/*.css) \
                    $(shell find templates -name "*.html") \
                    $(wildcard content/*)
@@ -12,6 +13,9 @@ SRCS            := $(wildcard cmd/*.go *.go posts/*.go)
 GIT_COMMIT_HASH := $(shell git rev-parse --short HEAD)
 
 $(OUTPUT)/%.html: beeceej.com $(TPL)
+	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
+
+$(CONTENT)/%.html: beeceej.com
 	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
 
 $(OUTPUT)/%.css: beeceej.com $(TPL)
