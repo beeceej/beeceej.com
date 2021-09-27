@@ -12,14 +12,16 @@ STATIC_OUT      := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(STATIC))
 SRCS            := $(wildcard cmd/*.go *.go posts/*.go)
 GIT_COMMIT_HASH := $(shell git rev-parse --short HEAD)
 
+TEMPLATIZE := GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com
+
 $(OUTPUT)/%.html: beeceej.com $(TPL)
-	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
+	$(TEMPLATIZE) $@
 
 $(CONTENT)/%.html: beeceej.com
-	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
+	$(TEMPLATIZE) $@
 
 $(OUTPUT)/%.css: beeceej.com $(TPL)
-	GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com $@
+	$(TEMPLATIZE) $@
 
 $(OUTPUT)/%.png: beeceej.com $(STATIC)
 	cp $(TEMPLATE)/$(notdir $@) $@
