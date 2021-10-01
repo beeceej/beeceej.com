@@ -154,9 +154,17 @@ var (
 		},
 		"notes/8-the-problem-with-modern-web-development.html": {
 			ContentPagePath: contentPagePath("8-the-problem-with-modern-web-development.html"),
-			Description:     "Maintainability of large javascript based web projects over time is called into questionj",
+			Description:     "Maintainability of large javascript based web projects over time is called into question",
 			Keywords:        []string{"React", "Javascript", "modern", "frontend", "web", "development"},
 			Other:           posts.ModernFrontendProblems,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
+		"notes/9-maple-leaf-coffee-nicaraguan-el-finca.html": {
+			ContentPagePath: contentPagePath("9-maple-leaf-coffee-nicaraguan-el-finca.html"),
+			Description:     "Maple leaf Coffee Roasters, Nicaraguan El Finca Review",
+			Keywords:        []string{"coffee", "light roast", "aeropress", "light roast", "brew", "maple leaf coffee roasters"},
+			Other:           posts.CoffeeFromAnOldCoworker,
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
