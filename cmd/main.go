@@ -154,7 +154,7 @@ var (
 		},
 		"notes/8-the-problem-with-modern-web-development.html": {
 			ContentPagePath: contentPagePath("8-the-problem-with-modern-web-development.html"),
-			Description:     "Maintainability of large javascript based web projects over time is called into questionj",
+			Description:     "Maintainability of large javascript based web projects over time is called into question",
 			Keywords:        []string{"React", "Javascript", "modern", "frontend", "web", "development"},
 			Other:           posts.ModernFrontendProblems,
 			PageID:          "notes-note",

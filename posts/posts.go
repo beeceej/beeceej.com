@@ -61,7 +61,7 @@ var (
 		Path:    "notes/8-the-problem-with-modern-web-development.html",
 		Title:   "The Problem With Modern Web Development",
 		Posted:  "2021-09-22",
-		Updated:  "2021-09-22",
+		Updated:  "2021-10-01",
 	}
 	CoffeeFromAnOldCoworker = Post{
 		Path:    "notes/9-maple-leaf-coffee-nicaraguan-el-finca.html",
