@@ -63,8 +63,15 @@ var (
 		Posted:  "2021-09-22",
 		Updated:  "2021-09-22",
 	}
+	CoffeeFromAnOldCoworker = Post{
+		Path:    "notes/9-maple-leaf-coffee-nicaraguan-el-finca.html",
+		Title:   "Coffee From an Old Coworker",
+		Posted:  "2021-10-01",
+		Updated:  "2021-10-01",
+	}
 
 	Posts = []Post{
+		CoffeeFromAnOldCoworker,
 		ModernFrontendProblems,
 		PeppersPartTwo,
 		MutableCallArgsInPython,

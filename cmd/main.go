@@ -160,6 +160,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/9-maple-leaf-coffee-nicaraguan-el-finca.html": {
+			ContentPagePath: contentPagePath("9-maple-leaf-coffee-nicaraguan-el-finca.html"),
+			Description:     "Maple leaf Coffee Roasters, Nicaraguan El Finca Review",
+			Keywords:        []string{"coffee", "light roast", "aeropress", "light roast", "brew", "maple leaf coffee roasters"},
+			Other:           posts.CoffeeFromAnOldCoworker,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
