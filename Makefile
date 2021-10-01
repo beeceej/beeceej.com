@@ -2,8 +2,7 @@ TEMPLATE        := templates
 OUTPUT          := output
 CONTENT         := content
 TPL             := $(wildcard $(TEMPLATE)/*.css) \
-                   $(shell find templates -name "*.html") \
-                   $(wildcard content/*)
+                   $(shell find templates -name "*.html")
 TPL_OUT         := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(TPL))
 STATIC          := $(wildcard $(TEMPLATE)/*.png) \
                    $(wildcard $(TEMPLATE)/*.jpg) \
@@ -15,9 +14,6 @@ GIT_COMMIT_HASH := $(shell git rev-parse --short HEAD)
 TEMPLATIZE := GIT_COMMIT_HASH=$(GIT_COMMIT_HASH) ./beeceej.com
 
 $(OUTPUT)/%.html: beeceej.com $(TPL)
-	$(TEMPLATIZE) $@
-
-$(CONTENT)/%.html: beeceej.com
 	$(TEMPLATIZE) $@
 
 $(OUTPUT)/%.css: beeceej.com $(TPL)
