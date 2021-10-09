@@ -43,7 +43,7 @@ var (
 		Path:    "notes/5-peppers-intro.html",
 		Title:   "Peppers Intro",
 		Posted:  "2021-08-01",
-		Updated: "2021-08-01",
+		Updated: "2021-10-09",
 	}
 	MutableCallArgsInPython = Post{
 		Path:    "notes/6-mutable-call-args-in-python.html",
@@ -55,19 +55,19 @@ var (
 		Path:    "notes/7-peppers-part-2.html",
 		Title:   "Peppers Part 2: The Flowering",
 		Posted:  "2021-09-22",
-		Updated:  "2021-09-24",
+		Updated:  "2021-10-09",
 	}
 	ModernFrontendProblems = Post{
 		Path:    "notes/8-the-problem-with-modern-web-development.html",
 		Title:   "The Problem With Modern Web Development",
 		Posted:  "2021-09-22",
-		Updated:  "2021-10-01",
+		Updated:  "2021-10-09",
 	}
 	CoffeeFromAnOldCoworker = Post{
 		Path:    "notes/9-maple-leaf-coffee-nicaraguan-el-finca.html",
 		Title:   "Coffee From an Old Coworker",
 		Posted:  "2021-10-01",
-		Updated:  "2021-10-01",
+		Updated:  "2021-10-09",
 	}
 
 	Posts = []Post{
