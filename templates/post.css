@@ -23,6 +23,14 @@
 	font-size: 16px;
 }
 
+#post .header-img {
+	width: 100%;
+}
+
+#post .body-img {
+	width: 70%;
+}
+
 @media only screen and (max-width: 600px) {
 	#post pre {
 		font-size: 10px;
