@@ -168,6 +168,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/10-peppers-part-3-fruits.html": {
+			ContentPagePath: contentPagePath("10-peppers-part-3-fruits.html"),
+			Description:     "Log of growing peppers entry number 3",
+			Keywords:        []string{"Hot pepper", "capsaicin", "Trinidad Moruga Scorpion", "Aerogarden"},
+			Other:           posts.PeppersPartThree,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
