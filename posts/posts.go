@@ -69,8 +69,15 @@ var (
 		Posted:  "2021-10-01",
 		Updated:  "2021-10-09",
 	}
+	PeppersPartThree = Post{
+		Path:    "notes/10-peppers-part-3-fruits.html",
+		Title:   "Peppers Part 3: Fruits",
+		Posted:  "2021-10-10",
+		Updated:  "2021-10-10",
+	}
 
 	Posts = []Post{
+		PeppersPartThree,
 		CoffeeFromAnOldCoworker,
 		ModernFrontendProblems,
 		PeppersPartTwo,
