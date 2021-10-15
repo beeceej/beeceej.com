@@ -1,9 +1,9 @@
 {{define "notes-note"}}
 <section id="post">
   <h3>{{- .Other.Title }} </h3>
-  <em>@{{ .Other.Posted -}}</em>
+  <em class="small-em">@{{ .Other.Posted -}}</em>
   {{- if .Other.Updated -}}
-  <em>,*{{ .Other.Updated -}}</em>
+  <em class="small-em">,*{{ .Other.Updated -}}</em>
   {{- end -}}
   <br>
   <br>
