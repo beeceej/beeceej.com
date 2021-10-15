@@ -5,7 +5,7 @@ TPL             := $(wildcard $(TEMPLATE)/*.css) \
                    $(shell find templates -name "*.html")
 TPL_OUT         := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(TPL))
 STATIC          := $(wildcard $(TEMPLATE)/*.png) \
-                   $(wildcard $(TEMPLATE)/*.jpg) \
+                   $(wildcard $(TEMPLATE)/*.webp) \
                    $(wildcard $(TEMPLATE)/*.txt)
 STATIC_OUT      := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(STATIC))
 SRCS            := $(wildcard cmd/*.go *.go posts/*.go)
@@ -22,7 +22,7 @@ $(OUTPUT)/%.css: beeceej.com $(TPL)
 $(OUTPUT)/%.png: beeceej.com $(STATIC)
 	cp $(TEMPLATE)/$(notdir $@) $@
 
-$(OUTPUT)/%.jpg: beeceej.com $(STATIC)
+$(OUTPUT)/%.webp: beeceej.com $(STATIC)
 	cp $(TEMPLATE)/$(notdir $@) $@
 
 $(OUTPUT)/%.txt: beeceej.com $(STATIC)
