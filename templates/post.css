@@ -18,6 +18,11 @@
 	overflow: scroll;
 }
 
+#post pre.inline {
+	display: inline;
+	color: orange;
+}
+
 #post .small-em {
 	color: grey;
 	font-size: 16px;

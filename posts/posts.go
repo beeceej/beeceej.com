@@ -49,7 +49,7 @@ var (
 		Path:    "notes/6-mutable-call-args-in-python.html",
 		Title:   "Mutable Call Arguments in Python",
 		Posted:  "2021-08-25",
-		Updated: "2021-08-25",
+		Updated: "2021-12-05",
 	}
 	PeppersPartTwo = Post{
 		Path:    "notes/7-peppers-part-2.html",
@@ -79,7 +79,7 @@ var (
 		Path:    "notes/11-alacritty-spawn-new-window.html",
 		Title:   "Spawning New Windows in Alacritty (On Fedora 35)",
 		Posted:  "2021-12-04",
-		Updated: "2021-12-04",
+		Updated: "2021-12-05",
 	}
 
 	Posts = []Post{
