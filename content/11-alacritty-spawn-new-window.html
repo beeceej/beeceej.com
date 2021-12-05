@@ -1,0 +1,15 @@
+I've been using <a href="https://github.com/alacritty/alacritty">Alacritty</a> for nearly a year on my mac, but only just made the switch on my Fedora machine. I used to be one of those people who used iTerm2 because everyone told me it was "better", but I never actually used half of its feature-set. Because of Alacritty's simplicity and lack of tabs, I relied on CMD+n to open up new instances of Alacritty pretty often, and was surprised when that key command didn't work on my Fedora machine.
+</br>
+</br>
+If you're running <pre style="display: inline">alacritty 0.9.0</pre>, getting it to create a new instance is an easy fix. You need to provide this argument to the <pre style="display: inline">$XDG_CONFIG_HOME/alacritty/alacritty.yml</pre> file.
+<pre>
+### ...
+### ...
+key_bindings:
+  - { key: N, mods: Control|Shift, action: SpawnNewInstance }
+### ...
+### ...
+</pre>
+Turns out <pre style="display: inline">SpawnNewInstance </pre> used to be called <pre style="display: inline">CreateNewWindow</pre>.
+</br>
+It's likely this will be fixed upstream soon, but until then this configuration does the trick.

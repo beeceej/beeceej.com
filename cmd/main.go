@@ -176,6 +176,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/11-alacritty-spawn-new-window.html": {
+			ContentPagePath: contentPagePath("11-alacritty-spawn-new-window.html"),
+			Description:     "Spawning New Windows on Fedora 35 with Alacritty 0.9.0",
+			Keywords:        []string{"Terminal Emulator", "alacritty", "linux"},
+			Other:           posts.AlacrittySpawnNewWindow,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
