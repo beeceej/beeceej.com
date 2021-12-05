@@ -55,25 +55,25 @@ var (
 		Path:    "notes/7-peppers-part-2.html",
 		Title:   "Peppers Part 2: The Flowering",
 		Posted:  "2021-09-22",
-		Updated:  "2021-10-15",
+		Updated: "2021-10-15",
 	}
 	ModernFrontendProblems = Post{
 		Path:    "notes/8-the-problem-with-modern-web-development.html",
 		Title:   "The Problem With Modern Web Development",
 		Posted:  "2021-09-22",
-		Updated:  "2021-10-09",
+		Updated: "2021-10-09",
 	}
 	CoffeeFromAnOldCoworker = Post{
 		Path:    "notes/9-maple-leaf-coffee-nicaraguan-el-finca.html",
 		Title:   "Coffee From an Old Coworker",
 		Posted:  "2021-10-01",
-		Updated:  "2021-10-09",
+		Updated: "2021-10-09",
 	}
 	PeppersPartThree = Post{
 		Path:    "notes/10-peppers-part-3-fruits.html",
 		Title:   "Peppers Part 3: Fruits",
 		Posted:  "2021-10-10",
-		Updated:  "2021-10-15",
+		Updated: "2021-10-15",
 	}
 	AlacrittySpawnNewWindow = Post{
 		Path:    "notes/11-alacritty-spawn-new-window.html",
