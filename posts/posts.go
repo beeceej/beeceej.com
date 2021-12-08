@@ -79,7 +79,7 @@ var (
 		Path:    "notes/11-alacritty-spawn-new-window.html",
 		Title:   "Spawning New Windows in Alacritty (On Fedora 35)",
 		Posted:  "2021-12-04",
-		Updated: "2021-12-05",
+		Updated: "2021-12-07",
 	}
 
 	Posts = []Post{
