@@ -16,6 +16,7 @@
 	background-color: #02071f;
 	color: limegreen;
 	overflow: scroll;
+	padding: 5px;
 }
 
 #post pre.inline {
