@@ -54,7 +54,7 @@ var (
 		Title:   "Matching Parens",
 		Posted:  "2021-04-30",
 		Updated: "2021-04-30",
-		Tags:    []string{"programming", "lisp"},
+		Tags:    []string{"programming", "lisp", "javascript"},
 	}
 	PeppersIntro = Post{
 		Path:    "notes/5-peppers-intro.html",
@@ -105,8 +105,16 @@ var (
 		Updated: "2021-12-07",
 		Tags:    []string{"programming"},
 	}
+	TicTacToe = Post{
+		Path:    "notes/12-tic-tac-toe.html",
+		Title:   "Tic Tac Toe",
+		Posted:  "2021-12-08",
+		Updated: "2021-12-08",
+		Tags:    []string{"game", "javascript"},
+	}
 
 	Posts = []Post{
+		TicTacToe,
 		AlacrittySpawnNewWindow,
 		PeppersPartThree,
 		CoffeeFromAnOldCoworker,
