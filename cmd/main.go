@@ -184,6 +184,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/12-tic-tac-toe.html": {
+			ContentPagePath: contentPagePath("12-tic-tac-toe.html"),
+			Description:     "tic-tac-toe game",
+			Keywords:        []string{"game", "tic-tac-toe", "javsacript"},
+			Other:           posts.TicTacToe,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 

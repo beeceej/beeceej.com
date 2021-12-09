@@ -1,0 +1,194 @@
+<style>
+  .ttt {
+	  text-align: center;
+	  background-color: black;
+	  width: 50%;
+	  margin: auto;
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	  grid-template-rows: repeat(3, 1fr);
+	  grid-column-gap: 5px;
+	  grid-row-gap: 5px;
+  }
+
+  .ttt-cell {
+	  background-color: white;
+	  height: 250px;
+  }
+
+.ttt-cell:hover { cursor: pointer; }
+
+  .ttt-1 { grid-area: 1 / 1 / 2 / 2; }
+  .ttt-2 { grid-area: 1 / 2 / 2 / 3; }
+  .ttt-3 { grid-area: 1 / 3 / 2 / 4; }
+  .ttt-4 { grid-area: 2 / 1 / 3 / 2; }
+  .ttt-5 { grid-area: 2 / 2 / 3 / 3; }
+  .ttt-6 { grid-area: 2 / 3 / 3 / 4; }
+  .ttt-7 { grid-area: 3 / 1 / 4 / 2; }
+  .ttt-8 { grid-area: 3 / 2 / 4 / 3; }
+  .ttt-9 { grid-area: 3 / 3 / 4 / 4; }
+
+  #post div.ttt-player-1 {
+	  display: inline-block;
+	  background-color: cyan;
+	  width: 50px;
+	  height: 50px;
+  }
+
+  #post div.ttt-player-2 {
+	  display: inline-block;
+	  background-color: yellow;
+	  width: 50px;
+	  height: 50px;
+  }
+
+  hr {
+	  width: 20%;
+	  margin-left: 0;
+	  text-align: left;
+  }
+  #ttt-turn-identifier {
+	  background-color: grey;
+  }
+
+  @keyframes ttt-typing {
+	  from { width: 0 }
+	  to { width: 100% }
+  }
+
+  @keyframes ttt-hidden {
+	  from { width: 0 }
+	  to { width: 0 }
+  }
+
+  .ttt-winner-active {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 1.6rem;
+    width: 0;
+    animation: ttt-typing 1s forwards;
+  }
+
+  .ttt-winner-hidden {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 1.6rem;
+    width: 0;
+    animation: ttt-hidden 1s forwards;
+  }
+</style>
+
+<h3>Player 1:</h3><div class="ttt-player-1"></div>
+<hr>
+<h3>Player 2:</h3><div class="ttt-player-2"></div>
+<hr>
+<h3>Turn:</h3><span id="ttt-turn-identifier"></span>
+<hr>
+<div style="display: inline-block">
+  <div id="ttt-winner" class="ttt-winner-hidden">winner</div>
+</div>
+<div class="ttt">
+  <div class="ttt-cell ttt-1"></div><div class="ttt-cell ttt-2"></div><div class="ttt-cell ttt-3"></div><div class="ttt-cell ttt-4"></div><div class="ttt-cell ttt-5"></div><div class="ttt-cell ttt-6"></div><div class="ttt-cell ttt-7"></div><div class="ttt-cell ttt-8"></div><div class="ttt-cell ttt-9"></div>
+</div>
+
+
+<script>
+  let turnBox = document.getElementById("ttt-turn-identifier")
+  let winnerBox = document.getElementById("ttt-winner")
+  let winningCombos = [
+	  // straight across
+	  [0,1,2],[3,4,5],[6,7,8],
+	  // up and down
+	  [0,3,6],[1,4,7],[2,5,8],
+	  // diagonal
+	  [0,4,8],[2,4,6]
+  ]
+
+  let isWinner = (gameState) => {
+	  let winner = false
+	  let isWinnerForSomeCombo = winningCombos.reduce((isWinner, combo) => {
+		  let candidatePlayer = playerColor(gameState)
+		  let winnerForCombo = combo.reduce((isWinner, position) => {
+			  let cellToCheck = gameState.cells[position]
+			  return isWinner && (cellToCheck.owner === candidatePlayer)
+		  }, true)
+		  return isWinner || winnerForCombo
+	  }, false)
+	  return isWinnerForSomeCombo
+  }
+  let cellDivs = [...document.getElementsByClassName("ttt-cell")]
+  let newGameState = () => {return {
+	  turn: 0,
+	  cells: cellDivs.map(cell => {return {cell: cell}})
+  }}
+  let gameState = newGameState()
+  let playerColor = (gameState) => gameState.turn % 2 === 0 ? "cyan" : "yellow"
+  let updateTurnBox = (gameState) => {
+	  turnBox.style["text-transform"] = "uppercase"
+	  turnBox.innerText = playerColor(gameState)
+	  turnBox.style["color"] = turnBox.innerText
+  }
+  let winnerAnimation = (gameState) => {
+	  winnerBox.innerText = `${playerColor(gameState)} wins!`
+	  winnerBox.style["text-transform"] = "uppercase"
+	  winnerBox.style["font-size"] = "2em"
+	  winnerBox.style["color"] = playerColor(gameState)
+	  winnerBox.classList.remove("ttt-winner-hidden")
+	  winnerBox.classList.add("ttt-winner-active")
+  }
+  let drawAnimation = (gameState) => {
+	  winnerBox.innerText = `It's a draw`
+	  winnerBox.style["text-transform"] = "uppercase"
+	  winnerBox.style["font-size"] = "2em"
+	  winnerBox.style["color"] = "grey"
+	  winnerBox.classList.remove("ttt-winner-hidden")
+	  winnerBox.classList.add("ttt-winner-active")
+  }
+  let allowGameMoves = true
+  updateTurnBox(gameState)
+  gameState.cells.forEach((cell, i) => {
+	  cell.cell.addEventListener("click", (event) => {
+		  let currentCell = gameState.cells[i]
+		  if(currentCell.taken) {
+			  return;
+		  } else if (!allowGameMoves) {
+			  return;
+		  } else {
+			  currentCell.cell.style["background-color"] = playerColor(gameState);
+			  let newCellState = [...gameState.cells]
+			  newCellState[i] = {...newCellState[i], taken: true, owner: playerColor(gameState)}
+			  gameState = {...gameState, cells: newCellState};
+			  if(isWinner(gameState)) {
+				  winnerAnimation(gameState)
+				  allowGameMoves = false
+				  setTimeout(() => {
+					  gameState = newGameState()
+					  winnerBox.innerText = ""
+					  winnerBox.classList.remove("ttt-winner-active")
+					  winnerBox.classList.add("ttt-winner-hidden")
+					  cellDivs.forEach(cell => {cell.style["background-color"] = "white"})
+					  updateTurnBox(gameState)
+					  allowGameMoves = true
+				  }, 1500)
+				  return
+			  }
+			  if(gameState.turn === 8) {
+				  drawAnimation(gameState)
+				  allowGameMoves = false
+				  setTimeout(() => {
+					  gameState = newGameState()
+					  winnerBox.innerText = ""
+					  winnerBox.classList.remove("ttt-winner-active")
+					  winnerBox.classList.add("ttt-winner-hidden")
+					  cellDivs.forEach(cell => {cell.style["background-color"] = "white"})
+					  updateTurnBox(gameState)
+					  allowGameMoves = true
+				  }, 1500)
+				  return
+			  }
+			  gameState.turn++
+			  updateTurnBox(gameState)
+		  }
+	  })
+  });
+</script>
