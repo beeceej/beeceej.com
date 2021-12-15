@@ -61,6 +61,37 @@
 	  to { width: 0 }
   }
 
+  @media only screen and (max-width: 600px) {
+	  #post h3 {
+		  display: inline;
+		  font-size: 2vw;
+	  }
+	  #post hr {
+		  display: none;
+	  }
+	  .ttt-cell {
+ 		  background-color: white;
+		  height: 10vh;
+	  }
+	  #post div.ttt-player-1 {
+		  width: 2vw;
+		  height: 2vw;
+	  }
+	  #post div.ttt-player-2 {
+		  width: 2vw;
+		  height: 2vw;
+	  }
+	  #ttt-turn-identifier {
+	   font-size: 2vw;
+	  }
+	  .ttt-winner-active {
+		  font-size: 2vw;
+	  }
+	  .ttt-winner-hidden {
+		  font-size: 2vw;
+	  }
+  }
+
   .ttt-winner-active {
     overflow: hidden;
     white-space: nowrap;
