@@ -112,8 +112,16 @@ var (
 		Updated: "2021-12-08",
 		Tags:    []string{"game", "javascript"},
 	}
+	PeppersPartFour = Post{
+		Path:    "notes/13-peppers-part-four-end-of-a-season.html",
+		Title:   "Peppers Part 4: End of A Season",
+		Posted:  "2021-12-16",
+		Updated: "2021-12-16",
+		Tags:    []string{"peppers", "gardening", "ferment"},
+	}
 
 	Posts = []Post{
+		PeppersPartFour,
 		TicTacToe,
 		AlacrittySpawnNewWindow,
 		PeppersPartThree,

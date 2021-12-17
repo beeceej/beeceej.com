@@ -192,6 +192,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/13-peppers-part-four-end-of-a-season.html": {
+			ContentPagePath: contentPagePath("13-peppers-part-four-end-of-a-season.html"),
+			Description:     "Peppers End of 2021",
+			Keywords:        []string{"Hot pepper", "capsaicin", "Trinidad Moruga Scorpion", "Aerogarden"},
+			Other:           posts.PeppersPartFour,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
