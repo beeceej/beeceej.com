@@ -119,8 +119,16 @@ var (
 		Updated: "2021-12-17",
 		Tags:    []string{"peppers", "gardening", "ferment"},
 	}
+	KhaoPiakSen = Post{
+		Path:    "notes/14-khao-piak-sen.html",
+		Title:   "Khao Piak Sen",
+		Posted:  "2022-01-17",
+		Updated:  "2022-01-17",
+		Tags:    []string{"recipe", "soup"},
+	}
 
 	Posts = []Post{
+		KhaoPiakSen,
 		PeppersPartFour,
 		TicTacToe,
 		AlacrittySpawnNewWindow,

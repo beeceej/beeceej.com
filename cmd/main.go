@@ -200,6 +200,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/14-khao-piak-sen.html": {
+			ContentPagePath: contentPagePath("14-khao-piak-sen.html"),
+			Description:     "Lao Chicken Noodle Soup",
+			Keywords:        []string{"Lao", "Noodle", "Soup", "chicken"},
+			Other:           posts.KhaoPiakSen,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
