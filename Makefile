@@ -6,6 +6,7 @@ TPL             := $(wildcard $(TEMPLATE)/*.css) \
 TPL_OUT         := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(TPL))
 STATIC          := $(wildcard $(TEMPLATE)/*.png) \
                    $(wildcard $(TEMPLATE)/*.webp) \
+                   $(wildcard $(TEMPLATE)/*.jpg) \
                    $(wildcard $(TEMPLATE)/*.txt)
 STATIC_OUT      := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(STATIC))
 SRCS            := $(wildcard cmd/*.go *.go posts/*.go)
@@ -20,6 +21,9 @@ $(OUTPUT)/%.css: beeceej.com $(TPL)
 	$(TEMPLATIZE) $@
 
 $(OUTPUT)/%.png: beeceej.com $(STATIC)
+	cp $(TEMPLATE)/$(notdir $@) $@
+
+$(OUTPUT)/%.jpg: beeceej.com $(STATIC)
 	cp $(TEMPLATE)/$(notdir $@) $@
 
 $(OUTPUT)/%.webp: beeceej.com $(STATIC)
