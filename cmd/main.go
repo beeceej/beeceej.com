@@ -208,6 +208,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/15-lgtm.html": {
+			ContentPagePath: contentPagePath("15-lgtm.html"),
+			Description:     "LGTM a Silly OCAML github action",
+			Keywords:        []string{"ocaml", "oss", "github", "github action"},
+			Other:           posts.LGTM,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
