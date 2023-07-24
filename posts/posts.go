@@ -133,7 +133,15 @@ var (
 		Updated: "2023-07-22",
 		Tags:    []string{"code", "oss", "ocaml", "fp", "github actions", "whimsical"},
 	}
+	MusicBackground = Post{
+		Path:    "notes/16-music-background.html",
+		Title:   "Some Musical Interests",
+		Posted:  "2023-07-24",
+		Updated: "2023-07-24",
+		Tags:    []string{"music"},
+	}
 	Posts = []Post{
+		MusicBackground,
 		LGTM,
 		KhaoPiakSen,
 		PeppersPartFour,

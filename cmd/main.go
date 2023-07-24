@@ -216,6 +216,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/16-music-background.html": {
+			ContentPagePath: contentPagePath("16-music-background.html"),
+			Description:     "Background of Musical Interests",
+			Keywords:        []string{"music"},
+			Other:           posts.MusicBackground,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
