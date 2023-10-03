@@ -3,9 +3,4 @@
 	text-align: left;
 	color: grey;
 }
-
-#about-page	h3 {
-	color:  #db4e4e ;
-	text-transform: uppercase;
-}
 {{end}}
