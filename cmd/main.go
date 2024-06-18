@@ -224,6 +224,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/17-emacs-and-back-again.html": {
+			ContentPagePath: contentPagePath("17-emacs-and-back-again.html"),
+			Description:     "Emacs and back Again",
+			Keywords:        []string{"emacs", "editor", "ide", "code"},
+			Other:           posts.EmacsAndBackAgain,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
