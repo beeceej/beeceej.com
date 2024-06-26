@@ -144,7 +144,7 @@ var (
 		Path:    "notes/17-emacs-and-back-again.html",
 		Title:   "Emacs And Back Again",
 		Posted:  "2024-06-18",
-		Updated: "2024-06-18",
+		Updated: "2024-06-25",
 		Tags:    []string{"editor", "ide", "emacs", "code"},
 	}
 	Posts = []Post{
