@@ -8,12 +8,13 @@ nav {
 	top: 0;
 	margin-bottom: 10px; /*Push content pages down a bit */
 	border-bottom: solid grey;
-	background-color: white;
+	background-color: var(--background-color);
+
 }
 
 /* Styles for the Nav Items */
 #nav-list {
 	text-transform: uppercase;
-	color: grey;
+	color: var(--link-text-color);
 }
 {{end}}
