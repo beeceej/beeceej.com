@@ -2,6 +2,7 @@
 
 body {
 	--link-text-color: grey;
+	--link-text-hover-color: #db4e4e;
 	--background-color: black;
 
 	font-size: 24px;
@@ -26,7 +27,7 @@ a {
 }
 
 a:hover {
-	color: #db4e4e;
+	color: var(--link-text-hover-color);
 }
 
 .no-list-style {

@@ -2,11 +2,13 @@
 
 const cssMappings = {
   dark: {
-    "--link-text-color": "grey",
-    "--background-color": "black",
+    "--link-text-color": "white",
+    "--link-text-hover-color": "teal",
+    "--background-color": "#02071f",
   },
   light: {
     "--link-text-color": "#02071f",
+    "--link-text-hover-color": "#db4e4e",
     "--background-color": "white",
   },
 };
@@ -38,9 +40,9 @@ function toggleDarkMode(event) {
   updateColors();
 }
 
-updateColors();
-
 document
   .getElementById("dark-mode-toggle-button")
   .addEventListener("click", toggleDarkMode);
+
+updateColors();
 {{end}}
