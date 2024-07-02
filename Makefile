@@ -2,7 +2,8 @@ TEMPLATE        := templates
 OUTPUT          := output
 CONTENT         := content
 TPL             := $(wildcard $(TEMPLATE)/*.css) \
-                   $(shell find templates -name "*.html")
+                   $(shell find templates -name "*.html") \
+                   $(shell find templates -name "*.js")
 TPL_OUT         := $(patsubst $(TEMPLATE)%, $(OUTPUT)%, $(TPL))
 STATIC          := $(wildcard $(TEMPLATE)/*.png) \
                    $(wildcard $(TEMPLATE)/*.webp) \
@@ -18,6 +19,9 @@ $(OUTPUT)/%.html: beeceej.com $(TPL)
 	$(TEMPLATIZE) $@
 
 $(OUTPUT)/%.css: beeceej.com $(TPL)
+	$(TEMPLATIZE) $@
+
+$(OUTPUT)/%.js: beeceej.com $(TPL)
 	$(TEMPLATIZE) $@
 
 $(OUTPUT)/%.png: beeceej.com $(STATIC)
