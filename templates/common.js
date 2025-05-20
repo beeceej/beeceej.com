@@ -5,11 +5,13 @@ const cssMappings = {
     "--link-text-color": "white",
     "--link-text-hover-color": "teal",
     "--background-color": "#02071f",
+    "--code-block-background-color": "#1e1b1b",
   },
   light: {
     "--link-text-color": "#02071f",
     "--link-text-hover-color": "#db4e4e",
     "--background-color": "white",
+    "--code-block-background-color": "#1e1b1b",
   },
 };
 
