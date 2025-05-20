@@ -13,7 +13,7 @@
 
 #post pre {
 	font-size: 16px;
-	background-color: #02071f;
+	background-color: var(--code-block-background-color);
 	color: limegreen;
 	overflow: scroll;
 	padding: 5px;
