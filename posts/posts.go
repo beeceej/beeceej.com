@@ -147,7 +147,15 @@ var (
 		Updated: "2024-06-25",
 		Tags:    []string{"editor", "ide", "emacs", "code"},
 	}
+	AI = Post{
+		Path:    "notes/18-ai.html",
+		Title:   "AI",
+		Posted:  "2026-04-29",
+		Updated: "2026-04-29",
+		Tags:    []string{"ai"},
+	}
 	Posts = []Post{
+		AI,
 		EmacsAndBackAgain,
 		MusicBackground,
 		LGTM,
