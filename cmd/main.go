@@ -232,6 +232,14 @@ var (
 			PageID:          "notes-note",
 			PageToRender:    "index.html",
 		},
+		"notes/18-ai.html": {
+			ContentPagePath: contentPagePath("18-ai.html"),
+			Description:     "AI",
+			Keywords:        []string{"ai"},
+			Other:           posts.AI,
+			PageID:          "notes-note",
+			PageToRender:    "index.html",
+		},
 	}
 )
 
